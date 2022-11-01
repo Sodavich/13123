@@ -29,7 +29,11 @@ namespace WindowsFormsApp1
             Account acc = new Account(add);
             acc.RegisterHandler(PrintSimpleMessage);
             acc.Take(sum);
+            acc.Add(add);
+            listBox1.Items.Add(add - sum);
             void PrintSimpleMessage(string message) => MessageBox.Show(message);
+
+            
         }
         public class Account
         {
@@ -61,11 +65,7 @@ namespace WindowsFormsApp1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            int add = int.Parse(textBox2.Text);
-            Account acc = new Account(add);
-            acc.Add(add);
-            acc.RegisterHandler(PrintSimpleMessage);
-            void PrintSimpleMessage(string message) => MessageBox.Show(message);
+
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
