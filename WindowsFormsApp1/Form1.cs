@@ -26,14 +26,13 @@ namespace WindowsFormsApp1
         {
             int add = int.Parse(textBox1.Text);
             int sum = int.Parse(textBox2.Text);
-            Account acc = new Account(add);
+            Account acc = new Account(sum);
+            int res = add - sum;
+            listBox1.Items.Add($"Остаток: {res}");
             acc.RegisterHandler(PrintSimpleMessage);
             acc.Take(sum);
-            acc.Add(add);
-            listBox1.Items.Add(add - sum);
-            void PrintSimpleMessage(string message) => MessageBox.Show(message);
-
             
+            void PrintSimpleMessage(string message) => MessageBox.Show(message);
         }
         public class Account
         {
@@ -71,6 +70,14 @@ namespace WindowsFormsApp1
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            int add = int.Parse(textBox1.Text);
+            Account acc = new Account(add);
+            acc.Add(add);
+            listBox1.Items.Add($"На вашем счету: {add}");
         }
     }
     
