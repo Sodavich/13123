@@ -28,8 +28,15 @@ namespace WindowsFormsApp1
             int sum = int.Parse(textBox2.Text);
             Account acc = new Account(sum);
             int res = add - sum;
+            
+            if(sum > add)
+            {
+                MessageBox.Show("Нельзя списать");
+            }
+            else
             listBox1.Items.Add($"Остаток: {res}");
             acc.RegisterHandler(PrintSimpleMessage);
+
             acc.Take(sum);
             
             void PrintSimpleMessage(string message) => MessageBox.Show(message);
